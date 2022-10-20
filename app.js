@@ -5,24 +5,20 @@ const context = canvas.getContext("2d");
 canvas.width = 800;
 canvas.height = 800;
 
-// 벽
-context.fillRect(200, 200, 50, 200);
-context.fillRect(400, 200, 50, 200);
+// 팔
+context.fillRect(210 - 40, 200 - 40, 15, 100);
+context.fillRect(350 - 40, 200 - 40, 15, 100);
 
-// 문
-context.lineWidth = 2;
-context.strokeRect(300, 300, 50, 100);
+// 몸
+context.fillRect(260 - 40, 200 - 40, 60, 200);
 
-// 천장
-context.fillRect(200, 200, 200, 20);
-
-// 지붕
-context.moveTo(200, 200);
-context.lineTo(325, 100);
-context.lineTo(450, 200);
+// 머리
+context.arc(250, 100, 50, 0, 2 * Math.PI);
 context.fill();
 
-// 바닥
-context.moveTo(100, 400);
-context.lineTo(550, 400);
-context.stroke();
+// 눈
+context.beginPath();
+context.fillStyle = "red";
+context.arc(270, 80, 8, 1 * Math.PI, 2 * Math.PI);
+context.arc(230, 80, 8, 1 * Math.PI, 2 * Math.PI);
+context.fill();
