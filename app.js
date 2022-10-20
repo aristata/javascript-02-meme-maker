@@ -5,13 +5,24 @@ const context = canvas.getContext("2d");
 canvas.width = 800;
 canvas.height = 800;
 
-// 채워진 사각형을 그린다
-// canvas 에서 왼쪽 모서리가 좌표 0, 0 이다
-// moveTo 는 해당 좌표로 이동한다
-context.moveTo(50, 50);
-// lineTo 는 해당 좌표로 이동하면서 선을 긋는다
-context.lineTo(150, 50);
-context.lineTo(150, 150);
-context.lineTo(50, 150);
-context.lineTo(50, 50);
+// 벽
+context.fillRect(200, 200, 50, 200);
+context.fillRect(400, 200, 50, 200);
+
+// 문
+context.lineWidth = 2;
+context.strokeRect(300, 300, 50, 100);
+
+// 천장
+context.fillRect(200, 200, 200, 20);
+
+// 지붕
+context.moveTo(200, 200);
+context.lineTo(325, 100);
+context.lineTo(450, 200);
+context.fill();
+
+// 바닥
+context.moveTo(100, 400);
+context.lineTo(550, 400);
 context.stroke();
