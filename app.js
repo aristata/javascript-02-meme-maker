@@ -22,31 +22,26 @@ const colors = [
   "#fd7e14"
 ];
 
-let moveToX = 0;
-let moveToY = 0;
-
-function getRandomLoc() {
-  return Math.floor(Math.random() * 800);
+/*
+ * 유저가 마우스를 움직일 때마다 moveTo 값을 변경한다
+ * 유저가 클릭하면, 클릭한 곳에서부터 선을 그린다
+ */
+let isPainting = false;
+function moveMouse(event) {
+  if (isPainting) {
+    context.lineTo(event.offsetX, event.offsetY);
+    context.stroke();
+    return;
+  }
+  context.moveTo(event.offsetX, event.offsetY);
 }
-
-function moveToClickPoint(e) {
-  moveToX = getRandomLoc();
-  moveToY = getRandomLoc();
+function startPainting() {
+  isPainting = true;
 }
-
-canvas.addEventListener("click", moveToClickPoint);
-
-function drawLineToMousePoint(e) {
-  context.beginPath();
-
-  context.moveTo(moveToX, moveToY);
-
-  const randomNumber = Math.floor(Math.random() * colors.length);
-  const color = colors[randomNumber];
-  context.strokeStyle = color;
-
-  context.lineTo(e.offsetX, e.offsetY);
-  context.stroke();
+function cancelPainting() {
+  isPainting = false;
 }
-
-canvas.addEventListener("mousemove", drawLineToMousePoint);
+canvas.addEventListener("mousemove", moveMouse);
+canvas.addEventListener("mousedown", startPainting);
+canvas.addEventListener("mouseup", cancelPainting);
+canvas.addEventListener("mouseleave", cancelPainting);
