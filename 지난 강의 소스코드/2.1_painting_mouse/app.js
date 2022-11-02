@@ -38,10 +38,10 @@ function moveMouse(event) {
 function startPainting() {
   isPainting = true;
 }
-function cancelPainting() {
+function onCancelPainting() {
   isPainting = false;
 }
 canvas.addEventListener("mousemove", moveMouse);
 canvas.addEventListener("mousedown", startPainting);
-canvas.addEventListener("mouseup", cancelPainting);
-canvas.addEventListener("mouseleave", cancelPainting);
+canvas.addEventListener("mouseup", onCancelPainting);
+canvas.addEventListener("mouseleave", onCancelPainting);
