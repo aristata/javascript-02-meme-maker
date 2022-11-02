@@ -1,4 +1,8 @@
 const canvas = document.querySelector("canvas");
+
+// 라인 굵기 인풋 선택하기
+const lineWidthInput = document.getElementById("line-width-input");
+
 const context = canvas.getContext("2d");
 canvas.width = 800;
 canvas.height = 800;
@@ -40,8 +44,18 @@ function startPainting() {
 }
 function cancelPainting() {
   isPainting = false;
+  context.beginPath(); // 기존의 선의 굵기가 변경되지 않도록 수정
 }
+
+// 라인 굵기 변화 함수 구현하기
+function changeLineWidth(event) {
+  context.lineWidth = event.target.value;
+}
+
 canvas.addEventListener("mousemove", moveMouse);
 canvas.addEventListener("mousedown", startPainting);
 canvas.addEventListener("mouseup", cancelPainting);
 canvas.addEventListener("mouseleave", cancelPainting);
+
+// 라인 굵기 인풋에 이벤트 추가하기
+lineWidthInput.addEventListener("change", changeLineWidth);
