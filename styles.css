@@ -8,3 +8,7 @@ canvas {
   height: 30px;
   cursor: pointer;
 }
+
+.input-container {
+  margin-top: 10px;
+}
