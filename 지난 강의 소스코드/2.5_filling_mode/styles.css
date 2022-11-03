@@ -1,0 +1,14 @@
+canvas {
+  margin-top: 30px;
+  border: 5px solid black;
+}
+
+.color-options {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.input-container {
+  margin-top: 10px;
+}
