@@ -16,6 +16,7 @@ const textInput = document.querySelector("#text-input");
 const context = canvas.getContext("2d");
 context.lineWidth = lineWidthInput.value;
 context.lineCap = "round";
+context.font = "50px 'gugi'";
 let isPainting = false;
 let isFilling = false;
 const CANVAS_WIDTH = 500;
@@ -104,22 +105,22 @@ function onDoubleClickCanvas(event) {
   // 텍스트 인풋의 데이터가 없다면 종료한다
   if (text.trim() === "") {
     return;
+  } else {
+    // 콘텍스트 임시 저장 = 현재 콘텍스트의 값들을 저장한다
+    context.save();
+
+    // 라인 너비를 수정한다
+    context.lineWidth = 1;
+
+    // 텍스트 폰트를 설정한다
+    context.font = "50px 'gugi'";
+
+    // 텍스트를 캔버스에 그린다
+    context.fillText(text, event.offsetX, event.offsetY);
+
+    // 콘텍스트를 원래대로 돌린다
+    context.restore();
   }
-
-  // 콘텍스트 임시 저장 = 현재 콘텍스트의 값들을 저장한다
-  context.save();
-
-  // 라인 너비를 수정한다
-  context.lineWidth = 1;
-
-  // 텍스트 폰트를 설정한다
-  context.font = "50px 'Press Start 2P'";
-
-  // 텍스트를 캔버스에 그린다
-  context.fillText(text, event.offsetX, event.offsetY);
-
-  // 콘텍스트를 원래대로 돌린다
-  context.restore();
 }
 
 // event listener --------------------------------------------------------------
