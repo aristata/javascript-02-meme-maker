@@ -1,8 +1,3 @@
-@font-face {
-  font-family: "gugi";
-  src: url("Gugi-Regular.ttf");
-}
-
 canvas {
   margin-top: 30px;
   border: 5px solid black;

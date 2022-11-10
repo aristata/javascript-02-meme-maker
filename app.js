@@ -13,6 +13,13 @@ const textInput = document.querySelector("#text-input");
 // 저장 버튼 찾기
 const saveButton = document.querySelector("#save-button");
 
+// font
+const myFont = new FontFace("myFont", "url(./Gugi-Regular.ttf)");
+myFont.load().then((font) => {
+  document.fonts.add(font);
+  // console.log("Font loaded");
+});
+
 // grobal variable -------------------------------------------------------------
 const context = canvas.getContext("2d");
 context.lineWidth = lineWidthInput.value;
@@ -105,7 +112,7 @@ function onDoubleClickCanvas(event) {
   } else {
     context.save();
     context.lineWidth = 1;
-    context.font = "50px 'gugi'";
+    context.font = "50px 'myFont'";
     context.fillText(text, event.offsetX, event.offsetY);
     context.restore();
   }
